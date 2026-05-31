@@ -303,4 +303,57 @@ ${wish}`;
   });
 }
 
+const API_URL = 'https://script.google.com/macros/s/AKfycbzHxSIoznX3UShgruKMekQX0futl00gtbA38xoE9S46G4SePefguLrq9k1AxQ0Ax127/exec';
+
+const wishList = document.getElementById('wishList');
+const wishSubmit = document.getElementById('wishSubmit');
+
+async function loadWishes() {
+  try {
+    const res = await fetch(API_URL);
+    const data = await res.json();
+
+    wishList.innerHTML = '';
+
+    data.forEach(item => {
+      wishList.innerHTML += `
+        <blockquote class="wish reveal in">
+          <strong>${item.nama}</strong>
+          <p>${item.ucapan}</p>
+        </blockquote>
+      `;
+    });
+  } catch(err) {
+    console.error(err);
+  }
+}
+
+if(wishSubmit){
+  wishSubmit.addEventListener('click', async () => {
+
+    const nama = document.getElementById('wishName').value.trim();
+    const ucapan = document.getElementById('wishText').value.trim();
+
+    if(!nama || !ucapan){
+      alert('Lengkapi form');
+      return;
+    }
+
+    await fetch(API_URL,{
+      method:'POST',
+      body:JSON.stringify({
+        nama,
+        ucapan
+      })
+    });
+
+    document.getElementById('wishName').value = '';
+    document.getElementById('wishText').value = '';
+
+    loadWishes();
+  });
+}
+
+loadWishes();
+
 })();
