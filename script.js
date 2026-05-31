@@ -281,28 +281,6 @@
   });
 
   // ---------- WISH FORM ----------
-const wishBtn = document.getElementById('wishBtn');
-
-if (wishBtn) {
-  wishBtn.addEventListener('click', () => {
-    const name = document.getElementById('wishName').value.trim();
-    const wish = document.getElementById('wishText').value.trim();
-
-    const message =
-`Ucapan Pernikahan
-
-Nama: ${name}
-
-Ucapan:
-${wish}`;
-
-    window.open(
-      `https://wa.me/6289512924881?text=${encodeURIComponent(message)}`,
-      '_blank'
-    );
-  });
-}
-
 const API_URL = 'https://script.google.com/macros/s/AKfycbzHxSIoznX3UShgruKMekQX0futl00gtbA38xoE9S46G4SePefguLrq9k1AxQ0Ax127/exec';
 
 const wishList = document.getElementById('wishList');
