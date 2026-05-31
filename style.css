@@ -824,3 +824,26 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .cover.hide { transform: translateX(-50%) scale(1.05); }
   .float-wa, .float-music { position: fixed; }
 }
+
+.wish-form{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-top:20px;
+}
+
+.wish-form input,
+.wish-form textarea{
+  width:100%;
+  padding:14px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.1);
+  color:var(--primary);
+  border-radius:4px;
+  font-family:inherit;
+}
+
+.wish-form textarea{
+  min-height:120px;
+  resize:vertical;
+}
